@@ -6,10 +6,28 @@ plugins {
 group 'com.Moussa-Tech'
 version '1.0-alpha'
 
+apply plugin: 'java'
+
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+    }
+}
 
 repositories {
+    jcenter()
+    mavenLocal()
     mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
 }
 
 dependencies {
